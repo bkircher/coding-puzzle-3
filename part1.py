@@ -16,29 +16,29 @@ def permutations(sequence: str, repeat: int) -> List[str]:
     return ["".join(tup) for tup in product(sequence, repeat=repeat)]
 
 
-def determine_pattern(states: str, window_length: int) -> str:
-    buffer = None
-    buf_len = pow(len(states), window_length)
-    perms = permutations(sequence=states, repeat=window_length)
+def determine_pattern(states: str, window_width: int) -> str:
+    buf = None
+    buf_len = pow(len(states), window_width)
+    perms = permutations(sequence=states, repeat=window_width)
     for elem in perms:
-        if not buffer:
-            buffer = elem
+        if not buf:
+            buf = elem
 
-        if elem not in buffer:
+        if elem not in buf:
             i = 1
-            while i < window_length:
-                pos = window_length - i
+            while i < window_width:
+                pos = window_width - i
                 head, tail = elem[:pos], elem[pos:]
-                if buffer[-pos:] == head:
-                    buffer += tail
+                if buf[-pos:] == head:
+                    buf += tail
                     break
 
                 i += 1
-                if i == window_length:
-                    buffer += elem
+                if i == window_width:
+                    buf += elem
                     break
 
-    res = buffer[: buf_len - window_length] + perms[-1]
+    res = buf[: buf_len - window_width] + perms[-1]
     return res
 
 
