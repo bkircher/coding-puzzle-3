@@ -22,7 +22,7 @@ Note: The pattern forms a ring.
 
 Examples:
 
-```c++
+```raw
 determine_pattern(".X", 3) = ...X.XXX (length 8)
 determine_pattern(".xO", 4) = ....x...O..xx..xO..Ox..OO.x.x.O.xxx.xxO.xOx.xOO.O.Oxx.OxO.OOx.OOOxxxxOxxOOxOxOOOO (length 81)
 ```
